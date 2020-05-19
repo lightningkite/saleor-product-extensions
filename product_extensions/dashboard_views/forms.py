@@ -37,5 +37,5 @@ class ProductExtensionForm(forms.ModelForm):
             self.fields['product'].queryset = self.fields[
                 'product'].queryset.filter(extension__isnull=True)
 
-        if self.instance.product:
+        if getattr(self.instance, 'product', None):
             self.fields['product'].set_initial(self.instance.product)
